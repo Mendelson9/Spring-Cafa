@@ -7,7 +7,7 @@ int melody[] = {
 
 // note durations: 4 = quarter note, 8 = eighth note, etc.:
 int noteDurations[] = {
-  4,8,2,4,4,4,8,2,8,4,8,2,4,4,1,3,4,4 };
+  4,8,1,4,4,4,8,1,8,4,8,1,4,4,1,3,4,4 };
 
 void setup() {
 }
@@ -20,7 +20,7 @@ void loop() {
     
     // when the same note is played twice in a row, insert an extra small delay so you can tell when the end/beggining are.
     if (melody[thisNote] == melody[thisNote + 1]) {
-     delay(100);
+     delay(50);
   } 
 
     // to calculate the note duration, take one second
