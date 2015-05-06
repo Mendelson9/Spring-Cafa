@@ -1,0 +1,212 @@
+<html><head>
+<title>CAFA: Arduino</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<style type="text/css">
+ov {
+ text-decoration:overline
+}
+</style>
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000">
+<h1> Computation </h1>
+<b>Class Thurs: at 1:00 in 2612</b>
+<h3>Programming</h3>
+<ul>
+  <li>For those who are having problems with programming,
+    I will meet with you in small groups in the weaving studio.</li>
+  <li> For those who are working on programming projects, I would like to meet regularly with you also</li>
+  <li> For those who are doing ok with programming, but are not doing a programming project, 
+    I would like to meet with you in small groups</li>
+  <li> There will be sign up sheets for both Gail and me</li> 
+</ul>
+
+
+<h3>Homework 4 (due week 5)</h3>
+<ol>
+  <li> Compose a melody with 16 tones, and write a program to play it on an Arduino - look at tutorial</li>
+  <p> Advanced</p>
+  <li> Using Processing, control the brightness of an LED and the rate of blinking from the mouse
+    position on the main computer.</li> 
+</ol>
+
+<h3>Homework 5 (due week 6)</h3>
+<ul>
+  <li> Light an LED with a Lilypad Arduino (You can download the Arduino IDE from Adafruit with the lilypad
+  drivers)</li>
+  <li> Serial communication: read data from a PC and use it to control an LED</li>
+
+Advanced
+  <li> Write a program in Python to print patterns like the following:
+    <pre>      *    *
+       *  *
+        **
+
+      *   *
+       * *
+        *
+
+    </pre></li> 
+
+</ul>
+
+<h3> Arrays in C</h3>
+    <pre>      int rows = 12;
+      int cols = 10;
+      int img[rows][cols];
+      for (int r=0; r&lt;rows; r++) {
+        for (int c=0; c&lt;cols; c++) {
+           img[r][c] = 0;
+        }
+      }
+
+      for (int i=0; i&lt;10; i++) {
+         img[i][i] = 1;
+      }
+
+      void printImg() {
+        for (int r=0; r&lt;rows; r++) {
+          for (int c=0; c&lt;cols; c++) {
+             img[r][c] = 0;
+          }
+        }
+      
+      }
+
+    </pre>
+  <li> Lists in Python, arrays in Arduino C
+    <pre>      for i in range(5):
+
+      for i in [0,1,2,3,4]:
+
+      str1 = "Python"
+      print(str1[0])
+      for i in range(len(str1)):
+
+      for letter in str1:
+         print(letter)   
+  </pre></li>
+  <li> printing 2D arrays in Python:
+    <pre>      for r in range(rows):
+         for c in range(cols):
+            array[r][c] = random(10)
+
+      for r in range(rows):
+         for c in range(cols):
+            print(array[r][c], end=" ")
+         // what goes here?
+
+      for row in array:  //get a row
+         for item in row:
+            print(item, end=" ")
+    </pre></li> 
+
+
+<h3>Serial Communication</h3>
+<ul>
+  <li> The USB cable provides serial communication with a PC [or other device].</li>
+  <li> You need to open the serial port with 
+    <pre>      Serial.begin(9600);
+  </pre></li> 
+  <li> What happens if you do the following
+    <pre>      Serial.write("high");
+  </pre></li> 
+  <li> Communication can also occur in the opposite direction. (provided you have a program on the PC that
+    can send data on the USB port.)
+    <pre>      int incomingChar = Serial.read();
+    </pre>
+    Does it only read one int at a time? what if you send more</li> 
+  <li> Does a read block execution just like delay() will, so the right way to do things is:
+    <pre>      if (Serial.available() &gt; 0) {
+    </pre>
+    What happens if we don't check this?</li>
+</ul>
+
+
+<h3>Arduino programming elements</h3>
+<ul>
+  <li> if statements</li> 
+  <li> while and for loops</li> 
+  <li> defining functions, using parameters, and return statements</li> 
+  <li> arrays</li>
+  <li> Boolean values</li>
+</ul>
+
+
+<h4>Some questions</h4>
+<ul>
+  <li> if str1 = "Python" what does the following print:
+    <pre>      print(str1[3])
+    </pre>
+  </li>
+  <li> What does this code do?
+    <pre>      int state = 0;
+      void loop() {
+         state = state + 11;
+         if (state == 4) {state = 0;}
+         Serial.println(state);
+      }
+    </pre>
+  </li>
+
+  <li> How does the code work without delay():
+    <pre>  void loop() {
+  unsigned long currentMillis = millis();
+  if (currentMillis - previousMillis &gt; interval) {
+    previousMillis = currentMillis;
+    
+    if (ledState == LOW) ledState = HIGH;
+    else ledState = LOW;
+  
+    digitalWrite(ledPin, ledState);
+  }
+}
+    </pre>
+</li></ul>
+
+
+
+<h3>Lists in Python</h3>
+<ul>
+  <li> list1 = [1,2,3]</li>
+  <li> loops in Python are easy:
+    <pre> 
+      for i in range(10):
+         print (i)
+  </pre></li> 
+  <li> there is an important concept of iterator
+    <pre>      for i in list1:
+         print (i)
+  </pre></li>
+  <li> Let's create a pattern:
+    <pre>      row = []  # this is an empty list
+      row.append(0)
+      print(row)
+    </pre></li> 
+  <li> How do you append 10 0's?</li>
+  <li> Let's make a picture with 10 rows, starting with all 0's
+    <pre>      pict = []
+      row = []
+      ## create a row with 10 0's
+      for i in range(10):
+         row.append(0)
+      for i in range(10):
+         pict.append(row)
+
+      for r in pict:
+         for c in r:
+            print(c, end=" ")
+         print()
+  </pre></li> 
+  
+    
+</ul>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+
+
+</body></html>
